@@ -2,7 +2,8 @@ import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import BlurFade from "@/components/magicui/blur-fade";
 import { SplitText } from "@/components/motion/split-text";
-import { formatDate, readingTime } from "@/lib/utils";
+import { BlogAuthor, BlogTags } from "@/components/blog-author";
+import { formatDate } from "@/lib/utils";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -107,15 +108,16 @@ export default async function Blog({
           className="font-display text-3xl font-bold leading-[1.1] sm:text-5xl"
         />
         <BlurFade delay={0.3}>
-          <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
-            <span>{DATA.name}</span>
-            <span aria-hidden>·</span>
-            <time dateTime={post.metadata.publishedAt}>
-              {formatDate(post.metadata.publishedAt)}
-            </time>
-            <span aria-hidden>·</span>
-            <span>{readingTime(post.source)} min de lecture</span>
-          </p>
+          <div className="space-y-5 border-b pb-8">
+            <p className="text-sm text-muted-foreground">
+              <time dateTime={post.metadata.publishedAt}>
+                {formatDate(post.metadata.publishedAt)}
+              </time>{" "}
+              · {post.readingTime} min de lecture
+            </p>
+            <BlogAuthor />
+            <BlogTags tags={post.metadata.tags} />
+          </div>
         </BlurFade>
       </header>
       <BlurFade delay={0.4}>

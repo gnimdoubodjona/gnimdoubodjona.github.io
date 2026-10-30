@@ -1,5 +1,5 @@
 import { Hero } from "@/components/hero";
-import { Icons } from "@/components/icons";
+import { ContactAssemble } from "@/components/motion/contact-assemble";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ScrollRevealText } from "@/components/motion/scroll-reveal-text";
 import { ScrollTimeline } from "@/components/motion/scroll-timeline";
@@ -10,10 +10,7 @@ import { VelocityMarquee } from "@/components/motion/velocity-marquee";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 const half = Math.ceil(DATA.skills.length / 2);
 const SKILL_ROWS = [DATA.skills.slice(0, half), DATA.skills.slice(half)];
@@ -123,46 +120,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="contact" className="pb-24">
-        <BlurFade inView>
-          <div className="glass rounded-3xl px-5 py-12 text-center sm:px-10">
-            <span className="font-mono text-xs text-muted-foreground">
-              06 · Contact
-            </span>
-            <SplitText
-              as="h2"
-              trigger="view"
-              text="Parlons de votre projet"
-              className="mt-3 font-display text-3xl font-bold leading-tight sm:text-5xl"
-            />
-            <p className="mx-auto mt-4 max-w-[460px] text-pretty text-muted-foreground md:text-lg/relaxed">
-              Une idée, une mission freelance ou simplement une question ?
-              Écrivez-moi, je réponds rapidement.
-            </p>
-            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <Link
-                href={DATA.contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants({ size: "lg" }), "gap-2")}
-              >
-                <Icons.whatsapp className="size-4" />
-                WhatsApp
-              </Link>
-              <Link
-                href={`mailto:${DATA.contact.email}`}
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "glass glass-interactive min-w-0 gap-2 px-4"
-                )}
-              >
-                <Icons.email className="size-4 shrink-0" />
-                <span className="truncate">{DATA.contact.email}</span>
-              </Link>
-            </div>
-          </div>
-        </BlurFade>
-      </section>
+      <ContactAssemble />
     </main>
   );
 }
