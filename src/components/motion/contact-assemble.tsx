@@ -141,12 +141,7 @@ export function ContactAssemble() {
       ref={sectionRef}
       className="relative flex min-h-[90dvh] flex-col items-center justify-center py-24 text-center [perspective:800px]"
     >
-      <span
-        data-scatter
-        className="inline-block font-mono text-xs text-muted-foreground"
-      >
-        Contact
-      </span>
+     
       <h2
         aria-label={HEADING}
         className="mt-4 text-balance font-display text-4xl font-bold leading-tight sm:text-6xl"
