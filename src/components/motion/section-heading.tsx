@@ -2,24 +2,9 @@
 
 import { motion } from "framer-motion";
 
-export function SectionHeading({
-  index,
-  title,
-}: {
-  index: string;
-  title: string;
-}) {
+export function SectionHeading({ title }: { title: string }) {
   return (
     <div className="flex items-baseline gap-3">
-      <motion.span
-        className="font-mono text-xs text-muted-foreground"
-        initial={{ opacity: 0, x: -8 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {index}
-      </motion.span>
       <motion.h2
         className="font-display text-2xl font-bold"
         initial={{ opacity: 0, y: 12 }}

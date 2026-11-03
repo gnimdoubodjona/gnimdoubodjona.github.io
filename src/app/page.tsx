@@ -9,7 +9,11 @@ import { TiltCard } from "@/components/motion/tilt-card";
 import { VelocityMarquee } from "@/components/motion/velocity-marquee";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 
 const half = Math.ceil(DATA.skills.length / 2);
@@ -21,7 +25,7 @@ export default function Page() {
       <Hero />
 
       <section id="about" className="space-y-5">
-        <SectionHeading index="01" title="À propos" />
+        <SectionHeading title="À propos" />
         <ScrollRevealText
           text={DATA.summary}
           className="text-base leading-relaxed md:text-lg"
@@ -29,7 +33,7 @@ export default function Page() {
       </section>
 
       <section id="work" className="space-y-5">
-        <SectionHeading index="02" title="Expériences" />
+        <SectionHeading title="Expériences" />
         <ScrollTimeline>
           {DATA.work.map((work) => (
             <BlurFade key={work.company} inView>
@@ -49,7 +53,7 @@ export default function Page() {
       </section>
 
       <section id="education" className="space-y-5">
-        <SectionHeading index="03" title="Parcours scolaire" />
+        <SectionHeading title="Parcours scolaire" />
         <ScrollTimeline>
           {DATA.education.map((education) => (
             <BlurFade key={education.school} inView>
@@ -67,26 +71,47 @@ export default function Page() {
       </section>
 
       <section id="skills" className="space-y-5">
-        <SectionHeading index="04" title="Compétences" />
-        <div className="space-y-2">
+        <SectionHeading title="Compétences" />
+        <div>
           {SKILL_ROWS.map((row, i) => (
-            <VelocityMarquee key={i} baseVelocity={i === 0 ? -2 : 2}>
-              {row.map((skill) => (
-                <Badge
-                  key={skill}
-                  variant="outline"
-                  className="glass whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium"
-                >
-                  {skill}
-                </Badge>
-              ))}
-            </VelocityMarquee>
+            <BlurFade key={i} delay={i * 0.15} inView>
+              <VelocityMarquee
+                baseVelocity={i === 0 ? -1.5 : 1.5}
+                className="py-1"
+              >
+                {row.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex h-14 min-w-0 flex-1 items-center justify-center sm:h-16"
+                  >
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span
+                          data-marquee-pause
+                          role="img"
+                          aria-label={skill.name}
+                          className="group p-2"
+                        >
+                          <skill.icon
+                            color={skill.color}
+                            className="size-10 transition-transform duration-300 group-hover:scale-110 sm:size-12"
+                          />
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{skill.name}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
+                ))}
+              </VelocityMarquee>
+            </BlurFade>
           ))}
         </div>
       </section>
 
       <section id="projects" className="space-y-8">
-        <SectionHeading index="05" title="Projets" />
+        <SectionHeading title="Projets" />
         <div className="space-y-3">
           <SplitText
             as="h2"

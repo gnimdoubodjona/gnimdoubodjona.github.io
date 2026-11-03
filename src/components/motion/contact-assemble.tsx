@@ -145,7 +145,7 @@ export function ContactAssemble() {
         data-scatter
         className="inline-block font-mono text-xs text-muted-foreground"
       >
-        06 · Contact
+        Contact
       </span>
       <h2
         aria-label={HEADING}

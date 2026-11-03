@@ -1,5 +1,18 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
+import { FaJava } from "react-icons/fa";
+import {
+  SiAngular,
+  SiDjango,
+  SiFlutter,
+  SiGit,
+  SiMysql,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiSpringboot,
+  SiTypescript,
+} from "react-icons/si";
 
 export const DATA = {
   name: "Gnimdou BODJONA",
@@ -15,18 +28,17 @@ export const DATA = {
   avatarUrl: "/me1.png",
   cvUrl: "/cv-gnimdou-bodjona.pdf",
   skills: [
-    "React",
-    "Angular",
-    "TypeScript",
-    "Flutter",
-    "Python",
-    "Django",
-    "Django REST Framework",
-    "Java",
-    "Spring Boot",
-    "PostgreSQL",
-    "MySQL",
-    "Git",
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Angular", icon: SiAngular, color: "#DD0031" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Flutter", icon: SiFlutter, color: "#02A9F4" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "Django & Django REST Framework", icon: SiDjango, color: "#44B78B" },
+    { name: "Java", icon: FaJava, color: "#E76F00" },
+    { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Accueil" },
